@@ -67,11 +67,43 @@ public class Board {
 }
 
     public void storeCells() {
-        if (Main.turn.equals("X")){
-            char charOne = Main.playerX.charAt(0);
-            char charTwo = Main.playerO.charAt(1);
-            if (String.valueOf(charOne).equals("A")) {
-                
+        char charOne = Main.playerX.charAt(0);
+        char charTwo = Main.playerO.charAt(1);
+        if (charOne == 'A') {
+            switch (charTwo) {
+                case 0:
+                    a1 = 'X';
+                    break;
+                case 1:
+                    a2 = 'X';
+                    break;
+                case 2:
+                    a3 = 'X';
+                    break;
+            }
+        } else if (charTwo == 'B') {
+            switch (charTwo) {
+                case 0:
+                    b1 = 'X';
+                    break;
+                case 1:
+                    b2 = 'X';
+                    break;
+                case 2:
+                    b3 = 'X';
+                    break;
+            }
+        } else {
+            switch (charTwo) {
+                case 0:
+                    c1 = 'X';
+                    break;
+                case 1:
+                    c2 = 'X';
+                    break;
+                case 2:
+                    c3 = 'X';
+                    break;
             }
         }
     }
