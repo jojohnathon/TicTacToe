@@ -1,22 +1,25 @@
 import java.util.Scanner;
 
 public class Main {
+    static String turn;
+    static String playerX;
+    static String playerO;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Board board = new Board();
-
-        while (!Board.gameOver) {
-            int turnCount = 0;
-            if (turnCount % 2 == 0) {
+        turn = "X";
+        while (!board.gameOver) {
+            if (turn.equals("X")) {
                 System.out.print("Player 1's turn:");
-                String playerX = scanner.next();
-                turnCount = turnCount + 1;
-
+                playerX = scanner.next();
+                turn = "O";
+                board.checkWinner();
                 board.display();
             } else {
                 System.out.print("Player 2's turn:");
-                String playerO = scanner.next();
-                turnCount = turnCount + 1;
+                playerO = scanner.next();
+                turn = "X";
+                board.checkWinner();
                 board.display();
             }
         }
