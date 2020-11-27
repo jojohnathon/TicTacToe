@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     static String turn;
+    static int turnCount;
     static String playerX;
     static String playerO;
 
@@ -19,6 +20,7 @@ public class Main {
                 board.storeCells();
                 board.checkWinner();
                 turn = "O";
+                turnCount++;
 
             } else {
                 board.display();
@@ -27,6 +29,7 @@ public class Main {
                 board.storeCells();
                 board.checkWinner();
                 turn = "X";
+                turnCount++;
             }
         }
     }

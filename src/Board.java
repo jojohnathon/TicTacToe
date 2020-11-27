@@ -51,16 +51,14 @@ public class Board {
             } else if (line.equals("OOO")) {
                 gameOver = true;
                 return "O";
+            } else if (Main.turnCount == 8){
+                gameOver = true;
+                return "Draw";
             }
         }
         
-         for (int i = 0; i < 9; i++) { if
-         (Arrays.asList(board).contains(String.valueOf(i + 1))) {
-         break; } else if (i == 8) { gameOver = true; return "Draw"; }
-         
         System.out.println(Main.turn + "'s turn; enter a slot number to place " + Main.turn + " in:");
         return null;
-    }
 }
 
     public void storeCells() {
