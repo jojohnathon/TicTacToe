@@ -1,7 +1,9 @@
+package src;
+
 import java.util.Arrays;
 
 public class Board {
-   
+
     private char a1 = ' ';
     private char a2 = ' ';
     private char a3 = ' ';
@@ -15,7 +17,7 @@ public class Board {
     public boolean gameOver = false;
 
     public String checkWinner() {
-        for (int i = 0; i < 8; i++){
+        for (int i = 0; i < 8; i++) {
             String line = null;
             switch (i) {
                 case 0:
@@ -37,7 +39,7 @@ public class Board {
                     line = String.valueOf(a3) + String.valueOf(b3) + String.valueOf(c3);
                     break;
                 case 6:
-                    line = String.valueOf(a1) + String.valueOf(b2) +  String.valueOf(c3);
+                    line = String.valueOf(a1) + String.valueOf(b2) + String.valueOf(c3);
                     break;
                 case 7:
                     line = String.valueOf(a3) + String.valueOf(b2) + String.valueOf(c1);
@@ -51,58 +53,85 @@ public class Board {
                 return "O";
             }
         }
-
-        for (int i = 0; i < 9; i++) {
-            if (Arrays.asList(board).contains(String.valueOf(i+1))) {   //this doesn't work
-                break;
-            }
-            else if (i == 8) {
-                gameOver = true;
-                return "Draw";
-        }
-
+        
+         for (int i = 0; i < 9; i++) { if
+         (Arrays.asList(board).contains(String.valueOf(i + 1))) {
+         break; } else if (i == 8) { gameOver = true; return "Draw"; }
+         
         System.out.println(Main.turn + "'s turn; enter a slot number to place " + Main.turn + " in:");
         return null;
     }
 }
 
     public void storeCells() {
-        char charOne = Main.playerX.charAt(0);
-        char charTwo = Main.playerO.charAt(1);
-        if (charOne == 'A') {
-            switch (charTwo) {
-                case 0:
-                    a1 = 'X';
+
+        if (Main.turn.equals("X")) {
+            char charOneX = Main.playerX.charAt(0);
+            char charTwoX = Main.playerX.charAt(1);
+            String columnX = String.valueOf(charOneX);
+            String rowX = String.valueOf(charTwoX);
+            switch (columnX.toUpperCase()) {
+                case "A":
+                    if (rowX.equals("1")) {
+                        a1 = 'X';
+                        System.out.println(a1);
+                    } else if (rowX.equals("2")) {
+                        a2 = 'X';
+                    } else {
+                        a3 = 'X';
+                    }
                     break;
-                case 1:
-                    a2 = 'X';
+                case "B":
+                    if (rowX.equals("1")) {
+                        b1 = 'X';
+                    } else if (rowX.equals("2")) {
+                        b2 = 'X';
+                    } else {
+                        b3 = 'X';
+                    }
                     break;
-                case 2:
-                    a3 = 'X';
-                    break;
-            }
-        } else if (charTwo == 'B') {
-            switch (charTwo) {
-                case 0:
-                    b1 = 'X';
-                    break;
-                case 1:
-                    b2 = 'X';
-                    break;
-                case 2:
-                    b3 = 'X';
+                case "C":
+                    if (rowX.equals("1")) {
+                        c1 = 'X';
+                    } else if (rowX.equals("2")) {
+                        c2 = 'X';
+                    } else {
+                        c3 = 'X';
+                    }
                     break;
             }
         } else {
-            switch (charTwo) {
-                case 0:
-                    c1 = 'X';
+            char charOneO = Main.playerO.charAt(0);
+            char charTwoO = Main.playerO.charAt(1);
+            String columnO = String.valueOf(charOneO);
+            String rowO = String.valueOf(charTwoO);
+            switch (columnO.toUpperCase()) {
+                case "A":
+                    if (rowO.equals("1")) {
+                        a1 = 'O';
+                    } else if (rowO.equals("2")) {
+                        a2 = 'O';
+                    } else {
+                        a3 = 'O';
+                    }
                     break;
-                case 1:
-                    c2 = 'X';
+                case "B":
+                    if (rowO.equals("1")) {
+                        b1 = 'O';
+                    } else if (rowO.equals("2")) {
+                        b2 = 'O';
+                    } else {
+                        b3 = 'O';
+                    }
                     break;
-                case 2:
-                    c3 = 'X';
+                case "C":
+                    if (rowO.equals("1")) {
+                        c1 = 'O';
+                    } else if (rowO.equals("2")) {
+                        c2 = 'O';
+                    } else {
+                        c3 = 'O';
+                    }
                     break;
             }
         }
@@ -110,15 +139,15 @@ public class Board {
 
     public void display() {
         System.out.println("A   B   C   ");
-        printRow(a1, b1, c1, 1);
+        printRow(a1, b1, c1);
         System.out.println("---|---|---");
-        printRow(a2, b2, c2, 2);
+        printRow(a2, b2, c2);
         System.out.println("---|---|---");
-        printRow(a3, b3, c3, 3);
+        printRow(a3, b3, c3);
     }
 
-    private static void printRow(char a, char b, char c, int i) {
-        System.out.println(i + ' ' + a + " | " + b + " | " + c);
+    private static void printRow(char a, char b, char c) {
+        System.out.println(" " + a + " | " + b + " | " + c);
 
     }
 }
