@@ -1,7 +1,5 @@
 package src;
 
-import java.util.Arrays;
-
 public class Board {
 
     private char a1 = ' ';
